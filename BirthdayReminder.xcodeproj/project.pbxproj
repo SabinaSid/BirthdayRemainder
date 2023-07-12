@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		480550042A5EBF0400331C5E /* BirthdaysViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480550032A5EBF0400331C5E /* BirthdaysViewController.swift */; };
+		480550062A5EBF2E00331C5E /* NewBirthdayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480550052A5EBF2E00331C5E /* NewBirthdayViewController.swift */; };
 		48306B672A5D834B006FA950 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48306B662A5D834B006FA950 /* AppDelegate.swift */; };
 		48306B692A5D834B006FA950 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48306B682A5D834B006FA950 /* SceneDelegate.swift */; };
 		48306B6B2A5D834B006FA950 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48306B6A2A5D834B006FA950 /* ViewController.swift */; };
@@ -16,6 +18,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		480550032A5EBF0400331C5E /* BirthdaysViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthdaysViewController.swift; sourceTree = "<group>"; };
+		480550052A5EBF2E00331C5E /* NewBirthdayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewBirthdayViewController.swift; sourceTree = "<group>"; };
 		48306B632A5D834B006FA950 /* BirthdayReminder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BirthdayReminder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		48306B662A5D834B006FA950 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		48306B682A5D834B006FA950 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -59,6 +63,8 @@
 				48306B662A5D834B006FA950 /* AppDelegate.swift */,
 				48306B682A5D834B006FA950 /* SceneDelegate.swift */,
 				48306B6A2A5D834B006FA950 /* ViewController.swift */,
+				480550032A5EBF0400331C5E /* BirthdaysViewController.swift */,
+				480550052A5EBF2E00331C5E /* NewBirthdayViewController.swift */,
 				48306B6C2A5D834B006FA950 /* Main.storyboard */,
 				48306B6F2A5D834C006FA950 /* Assets.xcassets */,
 				48306B712A5D834C006FA950 /* LaunchScreen.storyboard */,
@@ -139,6 +145,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				48306B6B2A5D834B006FA950 /* ViewController.swift in Sources */,
+				480550042A5EBF0400331C5E /* BirthdaysViewController.swift in Sources */,
+				480550062A5EBF2E00331C5E /* NewBirthdayViewController.swift in Sources */,
 				48306B672A5D834B006FA950 /* AppDelegate.swift in Sources */,
 				48306B692A5D834B006FA950 /* SceneDelegate.swift in Sources */,
 			);
