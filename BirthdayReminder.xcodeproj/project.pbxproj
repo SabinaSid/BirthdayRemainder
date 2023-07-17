@@ -16,6 +16,7 @@
 		48306B6E2A5D834B006FA950 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 48306B6C2A5D834B006FA950 /* Main.storyboard */; };
 		48306B702A5D834C006FA950 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 48306B6F2A5D834C006FA950 /* Assets.xcassets */; };
 		48306B732A5D834C006FA950 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 48306B712A5D834C006FA950 /* LaunchScreen.storyboard */; };
+		48CDA5072A6575B500EAC8C6 /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48CDA5062A6575B500EAC8C6 /* CustomView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		48306B6F2A5D834C006FA950 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		48306B722A5D834C006FA950 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		48306B742A5D834C006FA950 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		48CDA5062A6575B500EAC8C6 /* CustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +69,7 @@
 				48306B682A5D834B006FA950 /* SceneDelegate.swift */,
 				48306B6A2A5D834B006FA950 /* ViewController.swift */,
 				480550032A5EBF0400331C5E /* BirthdaysViewController.swift */,
+				48CDA5062A6575B500EAC8C6 /* CustomView.swift */,
 				480550052A5EBF2E00331C5E /* NewBirthdayViewController.swift */,
 				48306B6C2A5D834B006FA950 /* Main.storyboard */,
 				48306B6F2A5D834C006FA950 /* Assets.xcassets */,
@@ -150,6 +153,7 @@
 				48306B6B2A5D834B006FA950 /* ViewController.swift in Sources */,
 				480550042A5EBF0400331C5E /* BirthdaysViewController.swift in Sources */,
 				480550062A5EBF2E00331C5E /* NewBirthdayViewController.swift in Sources */,
+				48CDA5072A6575B500EAC8C6 /* CustomView.swift in Sources */,
 				48306B672A5D834B006FA950 /* AppDelegate.swift in Sources */,
 				480E6C962A5FE64000158728 /* DataSourse.swift in Sources */,
 				48306B692A5D834B006FA950 /* SceneDelegate.swift in Sources */,

@@ -27,8 +27,6 @@ struct Person {
         
        
         let dayOfBirth = dateFormatter.string(from: dateOfBirthday)
-        print(dateOfBirthday.description)
-        print(dayOfBirth)
         
         let pronoun = sex == Sex.male ? "his": "her"
         
@@ -36,23 +34,19 @@ struct Person {
         let lastDigit = (age + 1) % 10
         let suffix = (1...3).contains(lastDigit) ? suffixs[lastDigit] : suffixs[0]
         
-        print("\(dayOfBirth), will be \(pronoun) \(age + 1)\(suffix) birthday")
-        
         return "\(dayOfBirth), will be \(pronoun) \(age + 1)\(suffix) birthday"
     }
     
     var daysBeforeBirthday: String {
-        let days = Int(Date.now.distance(to: birthdayThisYear)/60/60/24) + 1
+        let days = (Date.now.distance(to: birthdayThisYear)/60/60/24).rounded() + 1
         
         var str = String()
         switch days {
-        case 0: str = "today"
-        case 1: str = "\(days) day left"
-        default: str = "\(days) days left"
+        case 0: str = "Today"
+        case 1: str = "\(days.formatted()) day left"
+        default: str = "\(days.formatted()) days left"
         }
         
-        //let str = days > 1 ? "\(days) days left" : "\(days) day left"
-        print(str)
         return str
     }
     
@@ -84,7 +78,7 @@ class DataSourse: NSObject {
     
     var persons: [Person] = [
         Person(name: "Sabinka", dateOfBirthday: dateFromString("11/16/1999") ?? Date(), age: 22, sex: .female, istagram: "@sabinka"),
-        Person(name: "Sabinka2", dateOfBirthday: dateFromString("07/14/1999") ?? Date(), age: 21, sex: .male, istagram: "@sabinka"),
+        Person(name: "Sabinka2", dateOfBirthday: dateFromString("07/18/1999") ?? Date(), age: 21, sex: .male, istagram: "@sabinka"),
         Person(name: "Sabinka2", dateOfBirthday: dateFromString("07/17/1999") ?? Date(), age: 20, sex: .male, istagram: "@sabinka")
     ]
 }
