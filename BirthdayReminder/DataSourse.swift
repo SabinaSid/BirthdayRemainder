@@ -43,7 +43,15 @@ struct Person {
     
     var daysBeforeBirthday: String {
         let days = Int(Date.now.distance(to: birthdayThisYear)/60/60/24) + 1
-        let str = days > 1 ? "\(days) days left" : "\(days) day left"
+        
+        var str = String()
+        switch days {
+        case 0: str = "today"
+        case 1: str = "\(days) day left"
+        default: str = "\(days) days left"
+        }
+        
+        //let str = days > 1 ? "\(days) days left" : "\(days) day left"
         print(str)
         return str
     }
