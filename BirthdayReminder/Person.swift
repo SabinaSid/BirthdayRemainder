@@ -7,7 +7,7 @@
 
 import UIKit
 
-enum Sex {
+enum Sex: String, CaseIterable {
     case male
     case female
 }
