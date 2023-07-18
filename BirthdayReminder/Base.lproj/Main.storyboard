@@ -156,9 +156,6 @@
                         <viewLayoutGuide key="safeArea" id="SXN-pu-AXb"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <connections>
-                        <outlet property="testAvatar" destination="h8Z-HU-o4b" id="gJf-x1-LrT"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="chr-cm-hPO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

@@ -9,7 +9,7 @@ import UIKit
 
 class BirthdaysViewController: UIViewController {
     
-    let dataSourse = DataSourse()
+    let dataSourse = DataSource()
     let stackView = UIStackView()
     
     override func viewDidLoad() {
@@ -18,7 +18,7 @@ class BirthdaysViewController: UIViewController {
         stackView.axis = .vertical
         stackView.alignment = .fill
         stackView.distribution = .fillEqually
-        stackView.spacing = 16
+        stackView.spacing = 32
         
         for person in dataSourse.persons {
             viewPerson(person)
@@ -36,14 +36,13 @@ class BirthdaysViewController: UIViewController {
         //Add new person
         navigationItem.rightBarButtonItem?.target = self
         navigationItem.rightBarButtonItem?.action = #selector(goToAddBirthday(add:))
-        
-        testAvatar.image = cropImageAndMakeCircular(testAvatar.image!, with: CGSize(width: 55, height: 55))
-        // Do any additional setup after loading the view.
     }
     
     func viewPerson(_ person: Person)  {
         let customView = CustomView()
-        customView.configure(with: person.photo!, name: person.name, description: person.message, daysLeft: person.daysBeforeBirthday)
+        
+        customView.configure(with: person.photo, name: person.name, description: person.message, daysLeft: person.daysBeforeBirthday)
+        
         stackView.addArrangedSubview(customView)
     }
     
@@ -62,36 +61,4 @@ class BirthdaysViewController: UIViewController {
         }
     }
     
-    @IBOutlet weak var testAvatar: UIImageView!
-    
-    func cropImageAndMakeCircular(_ image: UIImage, with size: CGSize) -> UIImage? {
-     
-        // Создаем круглую маску
-        UIGraphicsBeginImageContextWithOptions(size, false, UIScreen.main.scale)
-        let context = UIGraphicsGetCurrentContext()
-        let circlePath = UIBezierPath(ovalIn: CGRect(origin: .zero, size: size))
-        context?.addPath(circlePath.cgPath)
-        context?.closePath()
-        context?.clip()
-
-        // Налагаем обрезанное изображение на маску
-        image.draw(in: CGRect(origin: .zero, size: size))
-
-        // Получаем итоговое изображение
-        let circularImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-
-        return circularImage
-    }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

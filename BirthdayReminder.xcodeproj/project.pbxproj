@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		480550042A5EBF0400331C5E /* BirthdaysViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480550032A5EBF0400331C5E /* BirthdaysViewController.swift */; };
 		480550062A5EBF2E00331C5E /* NewBirthdayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480550052A5EBF2E00331C5E /* NewBirthdayViewController.swift */; };
-		480E6C962A5FE64000158728 /* DataSourse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480E6C952A5FE64000158728 /* DataSourse.swift */; };
+		480E6C962A5FE64000158728 /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480E6C952A5FE64000158728 /* DataSource.swift */; };
 		48306B672A5D834B006FA950 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48306B662A5D834B006FA950 /* AppDelegate.swift */; };
 		48306B692A5D834B006FA950 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48306B682A5D834B006FA950 /* SceneDelegate.swift */; };
 		48306B6B2A5D834B006FA950 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48306B6A2A5D834B006FA950 /* ViewController.swift */; };
@@ -17,12 +17,13 @@
 		48306B702A5D834C006FA950 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 48306B6F2A5D834C006FA950 /* Assets.xcassets */; };
 		48306B732A5D834C006FA950 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 48306B712A5D834C006FA950 /* LaunchScreen.storyboard */; };
 		48CDA5072A6575B500EAC8C6 /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48CDA5062A6575B500EAC8C6 /* CustomView.swift */; };
+		48CDA5092A6597A900EAC8C6 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48CDA5082A6597A900EAC8C6 /* Person.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		480550032A5EBF0400331C5E /* BirthdaysViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthdaysViewController.swift; sourceTree = "<group>"; };
 		480550052A5EBF2E00331C5E /* NewBirthdayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewBirthdayViewController.swift; sourceTree = "<group>"; };
-		480E6C952A5FE64000158728 /* DataSourse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSourse.swift; sourceTree = "<group>"; };
+		480E6C952A5FE64000158728 /* DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
 		48306B632A5D834B006FA950 /* BirthdayReminder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BirthdayReminder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		48306B662A5D834B006FA950 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		48306B682A5D834B006FA950 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -32,6 +33,7 @@
 		48306B722A5D834C006FA950 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		48306B742A5D834C006FA950 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		48CDA5062A6575B500EAC8C6 /* CustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
+		48CDA5082A6597A900EAC8C6 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,11 +67,12 @@
 			isa = PBXGroup;
 			children = (
 				48306B662A5D834B006FA950 /* AppDelegate.swift */,
-				480E6C952A5FE64000158728 /* DataSourse.swift */,
+				480E6C952A5FE64000158728 /* DataSource.swift */,
+				48CDA5082A6597A900EAC8C6 /* Person.swift */,
 				48306B682A5D834B006FA950 /* SceneDelegate.swift */,
 				48306B6A2A5D834B006FA950 /* ViewController.swift */,
-				480550032A5EBF0400331C5E /* BirthdaysViewController.swift */,
 				48CDA5062A6575B500EAC8C6 /* CustomView.swift */,
+				480550032A5EBF0400331C5E /* BirthdaysViewController.swift */,
 				480550052A5EBF2E00331C5E /* NewBirthdayViewController.swift */,
 				48306B6C2A5D834B006FA950 /* Main.storyboard */,
 				48306B6F2A5D834C006FA950 /* Assets.xcassets */,
@@ -155,7 +158,8 @@
 				480550062A5EBF2E00331C5E /* NewBirthdayViewController.swift in Sources */,
 				48CDA5072A6575B500EAC8C6 /* CustomView.swift in Sources */,
 				48306B672A5D834B006FA950 /* AppDelegate.swift in Sources */,
-				480E6C962A5FE64000158728 /* DataSourse.swift in Sources */,
+				480E6C962A5FE64000158728 /* DataSource.swift in Sources */,
+				48CDA5092A6597A900EAC8C6 /* Person.swift in Sources */,
 				48306B692A5D834B006FA950 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
