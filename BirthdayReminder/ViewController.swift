@@ -38,7 +38,6 @@ class ViewController: UIViewController {
     }
     
     func animateInvalidEmail()  {
-        //emailTextField.text = String()
         let originalColor = emailTextField.backgroundColor
         let errorColor = UIColor.red
         let animationDuration = 0.9

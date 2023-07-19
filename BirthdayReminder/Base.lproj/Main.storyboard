@@ -142,6 +142,9 @@
                                 <buttonConfiguration key="configuration" style="plain" title="Change photo">
                                     <fontDescription key="titleFontDescription" name="Helvetica" family="Helvetica" pointSize="17"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="changePhotoButtonAct:" destination="PMe-E6-Qnb" eventType="touchUpInside" id="6ce-SY-Btb"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EIS-23-Bb0">
                                 <rect key="frame" x="39" y="346" width="45" height="21"/>
@@ -221,6 +224,7 @@
                         <outlet property="bithdayTextField" destination="hvY-UZ-ufj" id="hUx-8N-VSK"/>
                         <outlet property="intagramTextField" destination="Pjx-KX-I8h" id="v6R-Sw-i0z"/>
                         <outlet property="nameTextField" destination="6Cd-X9-W8B" id="A3d-kI-vVF"/>
+                        <outlet property="photoImageView" destination="UhU-bx-W8i" id="cQ5-l6-82N"/>
                         <outlet property="sexTextField" destination="ZOv-lB-nhl" id="uYk-9d-uhc"/>
                     </connections>
                 </viewController>

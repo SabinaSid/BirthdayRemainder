@@ -19,10 +19,14 @@ class NewBirthdayViewController: UIViewController {
     
     @IBOutlet weak var intagramTextField: UITextField!
     
+    @IBOutlet weak var photoImageView: UIImageView!
+    
     let datePicker = UIDatePicker()
     let agePicker = UIPickerView()
     let sexPicker = UIPickerView()
     let dateFormatter = DateFormatter()
+    
+    var customPhoto: UIImage? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -96,6 +100,9 @@ class NewBirthdayViewController: UIViewController {
         
         //go to the previous scene
         if let person = person {
+            if customPhoto != nil {
+                person.photo = photoImageView.image
+            }
             navigationController?.popViewController(animated: true)
             if let viewController = navigationController?.topViewController as? BirthdaysViewController {
                 viewController.dataSourse.persons.append(person)
@@ -109,6 +116,19 @@ class NewBirthdayViewController: UIViewController {
 
     @objc func doneButtonTapped() {
         view.endEditing(true)
+    }
+    
+    @IBAction func changePhotoButtonAct(_ sender: Any) {
+        //upload the photo
+        openGallery()
+        
+        //crop and save the photo
+        /*
+        if let photo = customPhoto {
+            let cropCustomPhoto = CustomView.cropImageAndMakeCircular(photo, with: CGSize(width: 150, height: 150))
+            photoImageView.image = cropCustomPhoto
+        }
+         */
     }
     
     func animateInvalidTextFiled(_ textField: UITextField)  {
@@ -229,4 +249,36 @@ extension NewBirthdayViewController: UIPickerViewDataSource, UIPickerViewDelegat
     
 }
 
+extension NewBirthdayViewController: UIImagePickerControllerDelegate,UINavigationControllerDelegate {
+    
+    func openGallery() {
+            if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
+                let imagePicker = UIImagePickerController()
+                imagePicker.delegate = self
+                imagePicker.sourceType = .photoLibrary
+                present(imagePicker, animated: true, completion: nil)
+            }
+        }
 
+        // Обработка выбранного изображения
+        func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+            if let pickedImage = info[.originalImage] as? UIImage {
+                // Здесь можно использовать выбранное изображение
+                // Например, вы можете установить его в UIImageView
+                customPhoto = pickedImage
+                
+                if let photo = customPhoto {
+                    let cropCustomPhoto = CustomView.cropImageAndMakeCircular(photo, with: CGSize(width: 150, height: 150))
+                    photoImageView.image = cropCustomPhoto
+                }
+            }
+
+            picker.dismiss(animated: true, completion: nil)
+        }
+    
+    // Обработка отмены выбора изображения
+        func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+            picker.dismiss(animated: true, completion: nil)
+        }
+    
+}

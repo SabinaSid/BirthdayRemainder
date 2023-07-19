@@ -69,7 +69,7 @@ class CustomView: UIView {
     func configure(with image: UIImage?, name: String, description: String, daysLeft: String) {
         
             if let customPhoto = image {
-                photo.image = cropImageAndMakeCircular(customPhoto, with: CGSize(width: 55, height: 55))
+                photo.image = CustomView.cropImageAndMakeCircular(customPhoto, with: CGSize(width: 55, height: 55))
             } else {
                 photo.image = UIImage.init(systemName: "person.circle.fill")
             }
@@ -79,7 +79,7 @@ class CustomView: UIView {
         }
     
     
-    func cropImageAndMakeCircular(_ image: UIImage, with size: CGSize) -> UIImage? {
+    static func cropImageAndMakeCircular(_ image: UIImage, with size: CGSize) -> UIImage? {
      
         // Создаем круглую маску
         UIGraphicsBeginImageContextWithOptions(size, false, UIScreen.main.scale)
