@@ -19,11 +19,7 @@ class BirthdaysViewController: UIViewController {
         stackView.alignment = .fill
         stackView.distribution = .fillEqually
         stackView.spacing = 32
-        
-        for person in dataSourse.persons {
-            viewPerson(person)
-        }
-        
+  
         view.addSubview(stackView)
         
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -36,6 +32,20 @@ class BirthdaysViewController: UIViewController {
         //Add new person
         navigationItem.rightBarButtonItem?.target = self
         navigationItem.rightBarButtonItem?.action = #selector(goToAddBirthday(add:))
+    }
+    
+    func clearStackView(_ stackView: UIStackView) {
+        for arrangedSubview in stackView.arrangedSubviews {
+            stackView.removeArrangedSubview(arrangedSubview)
+            arrangedSubview.removeFromSuperview()
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        clearStackView(stackView)
+        for person in dataSourse.persons {
+            viewPerson(person)
+        }
     }
     
     func viewPerson(_ person: Person)  {

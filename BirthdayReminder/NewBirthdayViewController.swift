@@ -92,9 +92,15 @@ class NewBirthdayViewController: UIViewController {
     
     @objc func addBirthday(add: UIBarButtonItem)  {
         //add new bithday
+        let person =  addPerson()
         
         //go to the previous scene
-        navigationController?.popViewController(animated: true)
+        if let person = person {
+            navigationController?.popViewController(animated: true)
+            if let viewController = navigationController?.topViewController as? BirthdaysViewController {
+                viewController.dataSourse.persons.append(person)
+            }
+        }
     }
     
     @objc func dateChanged() {
@@ -105,12 +111,87 @@ class NewBirthdayViewController: UIViewController {
         view.endEditing(true)
     }
     
-    func addPerson()  {
-        let name = nameTextField.text
-        let bithday = bithdayTextField.text
-        let age = ageTextField.text
-        let sex = sexTextField.text
-        let instagram = intagramTextField.text
+    func animateInvalidTextFiled(_ textField: UITextField)  {
+        let originalColor = textField.backgroundColor
+        let errorColor = UIColor.red
+        let animationDuration = 0.9
+        
+        UIView.animate(withDuration: animationDuration, animations: {
+            textField.backgroundColor = errorColor
+        })
+        
+        UIView.animate(withDuration: animationDuration, animations: {
+            textField.backgroundColor = originalColor
+        })
+        
+    }
+    
+    func validateEmptyTextField(_ textField: UITextField) -> Bool {
+        if textField.text == nil || textField.text!.isEmpty {
+            return false
+        }
+        return true
+    }
+    
+    func addPerson() -> Person?  {
+        var name: String
+        let bithday: Date
+        let age: Int
+        let sex: Sex
+        let instagram: String
+        
+        if !validateEmptyTextField(nameTextField) {
+            animateInvalidTextFiled(nameTextField)
+            return nil
+        }
+        name = nameTextField.text!
+        
+        if !validateEmptyTextField(bithdayTextField) {
+            animateInvalidTextFiled(bithdayTextField)
+            return nil
+        }
+        
+        if let day = dateFormatter.date(from: bithdayTextField.text!) {
+            bithday = day
+        } else {
+            animateInvalidTextFiled(bithdayTextField)
+            return nil
+        }
+      
+        
+        if !validateEmptyTextField(ageTextField) {
+            animateInvalidTextFiled(ageTextField)
+            return nil
+        }
+        
+        if let number = Int(ageTextField.text!) {
+            age = number
+        } else {
+            animateInvalidTextFiled(ageTextField)
+            return nil
+        }
+      
+        
+        if !validateEmptyTextField(sexTextField) {
+            animateInvalidTextFiled(sexTextField)
+            return nil
+        }
+        
+        if let gender = Sex(rawValue: sexTextField.text!) {
+            sex = gender
+        } else {
+            animateInvalidTextFiled(sexTextField)
+            return nil
+        }
+        
+        if !validateEmptyTextField(intagramTextField){
+            animateInvalidTextFiled(intagramTextField)
+            return nil
+        }
+        instagram = intagramTextField.text!
+        
+  
+        return Person(name: name, dateOfBirthday: bithday, age: age, sex: sex, istagram: instagram)
     }
 
 }
