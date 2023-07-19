@@ -15,7 +15,6 @@ class NewBirthdayViewController: UIViewController {
     
     @IBOutlet weak var ageTextField: UITextField!
     
-    
     @IBOutlet weak var sexTextField: UITextField!
     
     @IBOutlet weak var intagramTextField: UITextField!
@@ -23,27 +22,27 @@ class NewBirthdayViewController: UIViewController {
     let datePicker = UIDatePicker()
     let agePicker = UIPickerView()
     let sexPicker = UIPickerView()
-    
+    let dateFormatter = DateFormatter()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //MARK: - set up date formatter
+        dateFormatter.dateStyle = .full
+        dateFormatter.locale = Locale(identifier: "en_US")
         
         //MARK: - set up pickers
         datePicker.preferredDatePickerStyle = .wheels
         datePicker.datePickerMode = .date
         datePicker.maximumDate = .now
+        datePicker.locale = Locale(identifier: "en_US")
         datePicker.addTarget(self, action: #selector(dateChanged), for: .valueChanged)
-        //view.addSubview(datePicker)
         
-        let agePickerController = AgePicker()
-        agePicker.dataSource = agePickerController
-        agePicker.delegate = agePickerController
-        //view.addSubview(agePicker)
-        
-        let sexPickerController = SexPicker()
-        sexPicker.dataSource = sexPickerController
-        sexPicker.delegate = sexPickerController
-        //view.addSubview(sexPicker)
+        agePicker.dataSource = self
+        agePicker.delegate = self
+
+        sexPicker.dataSource = self
+        sexPicker.delegate = self
         
         //MARK: - set up text fields
         bithdayTextField.inputView = datePicker
@@ -59,11 +58,38 @@ class NewBirthdayViewController: UIViewController {
         ageTextField.inputAccessoryView = toolBar
         sexTextField.inputAccessoryView = toolBar
         
+        bithdayTextField.addTarget(self, action: #selector(textFieldEditingChanged), for: .editingChanged)
+        sexTextField.addTarget(self, action: #selector(textFieldEditingChanged), for: .editingChanged)
+        ageTextField.addTarget(self, action: #selector(textFieldEditingChanged), for: .editingChanged)
+        
         //MARK: -set up navigationBar
         navigationItem.rightBarButtonItem?.target = self
         navigationItem.rightBarButtonItem?.action = #selector(addBirthday(add:))
         // Do any additional setup after loading the view.
     }
+    
+    @objc func textFieldEditingChanged(textFiled: UITextField){
+        switch textFiled {
+        case bithdayTextField:
+            if let birthday = bithdayTextField.text {
+                datePicker.date = dateFormatter.date(from: birthday) ?? Date.now
+            }
+        case ageTextField:
+            if let age = ageTextField.text {
+                let index = Int(age) ?? 0
+                agePicker.selectRow(index, inComponent: 0, animated: true)
+            }
+        case sexTextField:
+            if let sex = sexTextField.text {
+                let rawValue = Sex(rawValue: sex)
+                if let index = Sex.allCases.firstIndex(of: rawValue ?? Sex.female) {
+                    sexPicker.selectRow(index, inComponent: 0, animated: true)
+                }
+            }
+        default: return
+        }
+    }
+    
     @objc func addBirthday(add: UIBarButtonItem)  {
         //add new bithday
         
@@ -72,64 +98,53 @@ class NewBirthdayViewController: UIViewController {
     }
     
     @objc func dateChanged() {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .full
         bithdayTextField.text = dateFormatter.string(from: datePicker.date)
     }
 
- 
     @objc func doneButtonTapped() {
         view.endEditing(true)
-        
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    func addPerson()  {
+        let name = nameTextField.text
+        let bithday = bithdayTextField.text
+        let age = ageTextField.text
+        let sex = sexTextField.text
+        let instagram = intagramTextField.text
     }
-    */
 
 }
 
 
-class AgePicker: NSObject, UIPickerViewDataSource, UIPickerViewDelegate {
+extension NewBirthdayViewController: UIPickerViewDataSource, UIPickerViewDelegate {
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return 100
+        switch pickerView {
+            case sexPicker: return Sex.allCases.count
+            case agePicker: return 100
+            default: return pickerView.numberOfComponents
+        }
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return "\(row)"
+        switch pickerView {
+            case sexPicker: return Sex.allCases[row].rawValue
+            case agePicker: return "\(row)"
+            default: return "\(row)"
+        }
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        //super.ageTextField.text = "\(row)"
+        switch pickerView {
+        case sexPicker: sexTextField.text = Sex.allCases[row].rawValue
+        case agePicker: ageTextField.text = "\(row)"
+        default: return
+        }
     }
-    
-}
-
-class SexPicker: NSObject, UIPickerViewDataSource, UIPickerViewDelegate {
-    
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return Sex.allCases.count
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return Sex.allCases[row].rawValue
-    }
-    
     
 }
 
